@@ -13,7 +13,7 @@ var resetPressed = true;
 
 
 init();
-
+// setup the squares
 function init(){
 	setupModeButtons();
 	setupSquares();
@@ -27,7 +27,7 @@ function init(){
 	}
 	reset();
 }
-
+// setup the buttons and changes the CSS
 function setupModeButtons(){
 	for(var i = 0; i < modeButtons.length; i++){
 		modeButtons[i].addEventListener("click", function(){
@@ -40,6 +40,7 @@ function setupModeButtons(){
 	}
 }
 
+// setups up the squares and changes the color
 function setupSquares(){
 	for(var i = 0; i < squares.length; i++){
 	//add click listeners to squares
@@ -71,7 +72,7 @@ function setupSquares(){
 	}
 }
 
-
+// provides the color information of the winning square
 async function updateColorName(){
 	const regex = /\([^\)]+\)/g; 
 	var rgbColors = pickedColor.match(regex); 
@@ -92,6 +93,7 @@ async function updateColorName(){
 	}
 }
 
+// resets the game to provide new colors and squares
 function reset(){
 	resetPressed = true;
 	colors = generateRandomColors(numSquares);
@@ -116,7 +118,7 @@ function reset(){
 resetButton.addEventListener("click", function(){
 	reset();
 })
-
+// generators a color change on the buttons
 function changeColors(color){
 	//loop through all squares
 	for(var i = 0; i < squares.length; i++){
@@ -124,12 +126,12 @@ function changeColors(color){
 		squares[i].style.background = color;
 	}
 }
-
+// sets up the random colors in each square
 function pickColor(){
 	var random = Math.floor(Math.random() * colors.length);
 	return colors[random];
 }
-
+// generates the color
 function generateRandomColors(num){
 	//make an array
 	var arr = []
@@ -141,7 +143,7 @@ function generateRandomColors(num){
 	//return that array
 	return arr;
 }
-
+// provides the random RGB combination
 function randomColor(){
 	//pick a "red" from 0 - 255
 	var r = Math.floor(Math.random() * 256);
